@@ -10,7 +10,9 @@ import {
 } from "@clerk/nextjs";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const { data } = api.posts.getAll.useQuery();
+
+  console.log(data);
 
   const user = useUser();
 
@@ -22,13 +24,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        {!user.isSignedIn && <SignInButton />}
-        {!!user.isSignedIn && (
-          <>
-            <SignOutButton />
-            <UserButton afterSignOutUrl="/" />
-          </>
-        )}
+        <div>
+          {" "}
+          {!user.isSignedIn && <SignInButton />}
+          {!!user.isSignedIn && (
+            <>
+              <SignOutButton />
+              <UserButton afterSignOutUrl="/" />
+            </>
+          )}
+        </div>
+        <div>
+          {data?.map((post) => <div key={post.id}>{post.content}</div>)}
+        </div>
       </main>
     </>
   );
