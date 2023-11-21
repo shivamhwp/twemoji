@@ -24,11 +24,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Run TypeScript type checking
-        run: pnpm run type-check
+        run: pnpm run typecheck
 
       - name: Run Lint
         run: pnpm run lint
