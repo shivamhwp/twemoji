@@ -1,35 +1,35 @@
-name: CI
+name: Node.js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 env:
-  DATABASE_URL: "https://fake.com"
+  DATABASE_URL: "https://shivamsharma.net" # Available to all jobs and steps
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [21]
+        node-version: [16.x, 18.x]
+
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.10
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install
 
-      - name: Typecheck
-        run: pnpm run typecheck
+      - name: Run TypeScript type checking
+        run: pnpm run type-check
 
-      - name: Lint
+      - name: Run Lint
         run: pnpm run lint
-
-      - name: Print Environment Variable
-        run: echo $DATABASE_URL # Changed to DATABASE_URL to match your env variable
-
