@@ -8,6 +8,33 @@ import superjson from "superjson";
 import { db } from "~/server/db";
 import { appRouter } from "../server/api/root";
 import { PageLayout } from "~/components/layout";
+import { LoadingPage } from "~/components/Loading";
+import { PostView } from "~/components/Postview";
+
+const ProfileFeed = (props: { userId: string }) => {
+  const { data, isLoading } = api.posts.getPostsByUserId.useQuery({
+    userId: props.userId,
+  });
+
+  if (isLoading)
+    return (
+      <div>
+        <LoadingPage />
+      </div>
+    );
+
+  if (!data || data.length === 0) {
+    <div> User has not posted yet.</div>;
+  }
+
+  return (
+    <div className="flex flex-col ">
+      {data?.map((fullPost) => (
+        <PostView {...fullPost} key={fullPost.post.id} />
+      ))}
+    </div>
+  );
+};
 
 export const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   const { data } = api.profile.getUserByUsername.useQuery({
@@ -34,7 +61,8 @@ export const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
         </div>
         <div className=" h-[64px]"></div>
         <div className="p-4 text-2xl font-bold"> {`@${data.username}`}</div>
-        <div className="w-full border-b border-slate-400"></div>
+        <div className="w-full border-b border-slate-400" />
+        <ProfileFeed userId={data.id} />
       </PageLayout>
     </>
   );
