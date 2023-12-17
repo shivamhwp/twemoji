@@ -10,7 +10,8 @@ Twitter but you can **only post emoji's.**
 6. [Upstash Redis](https://upstash.com) for rate limiting.
 7. [PlanetScale](https://planetscale.com) 
 8. [Prisma ORM](https://prisma.io)
-9. [zod](https://zod.dev) for input validation
+9. [zod](https://zod.dev) for input validation.
+10. [Axiom](https://axiom.co) for logs.
 
 
 check out the project here : [🐤](https://twemoji-t3.vercel.app)
