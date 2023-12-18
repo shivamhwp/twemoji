@@ -1,9 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -11,14 +10,12 @@ generator client {
 }
 
 model Post {
-    id        String     @id @default(cuid()) 
-    createdAt DateTime @default(now())
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
 
-    content String @db.VarChar(255)
+  content String
 
-    authorId String
+  authorId String
 
-    @@index([authorId])
-
+  @@index([authorId])
 }
-
