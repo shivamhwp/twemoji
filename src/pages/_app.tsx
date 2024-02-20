@@ -17,7 +17,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <Head>
           <title>twemoji</title>
           <meta name="description" content="💭" />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/twemoji-logo.svg" />
         </Head>
         <Toaster position="bottom-center" reverseOrder={false} />
         <Component {...pageProps} />
