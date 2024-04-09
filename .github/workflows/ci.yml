@@ -7,7 +7,8 @@ on:
     branches: [main]
 
 env:
-  DATABASE_URL: "https://shivamsharma.net" # Available to all jobs and steps
+  DATABASE_URL: "https://shivam.ing" 
+# Available to all jobs and steps
 
 jobs:
   build:
