@@ -12,10 +12,7 @@ export const PostView = (props: PostWithUser) => {
   return (
     <>
       <Link href={`/post/${post.id}`}>
-        <div
-          key={post.id}
-          className="flex gap-3 border-b border-slate-400 p-4 "
-        >
+        <div key={post.id} className="flex gap-3 border-b border-gray-600 p-4 ">
           <div>
             <Link href={`@${author.username}`}>
               <Image
@@ -28,7 +25,7 @@ export const PostView = (props: PostWithUser) => {
             </Link>
           </div>
           <div className="flex flex-col ">
-            <div className="flex gap-1   text-slate-300">
+            <div className="flex gap-1   text-gray-300">
               <Link href={`@${author.username}`}>
                 <span>{`@${author.username}`}</span>
               </Link>

@@ -46,7 +46,7 @@ export const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
       </Head>
 
       <PageLayout>
-        <div className="relative h-40  border-slate-400 bg-slate-600 ">
+        <div className="relative h-40  border-gray-600 bg-slate-600 ">
           <Image
             src={data.profilePicture}
             alt={`${data.username ?? ""}`}
@@ -57,7 +57,7 @@ export const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
         </div>
         <div className=" h-[64px]"></div>
         <div className="p-4 text-2xl font-bold"> {`@${data.username}`}</div>
-        <div className="w-full border-b border-slate-400" />
+        <div className="w-full border-b border-gray-600" />
         <ProfileFeed userId={data.id} />
       </PageLayout>
     </>
