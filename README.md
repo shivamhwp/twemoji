@@ -1,4 +1,4 @@
-# Twemoji( discontinued - no longer maintained )
+# Twemoji
 Twitter but you can **only post emoji's.**
 # Tech-Stack
 
